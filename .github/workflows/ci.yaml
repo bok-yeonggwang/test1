@@ -1,0 +1,24 @@
+name: My First Workflow
+
+# 1. 이벤트 설정: main 브랜치로 푸시(push)될 때 실행
+on:
+  push:
+    branches: [ "main" ]
+
+# 2. 실행할 작업(Job) 정의
+jobs:
+  build:
+    # 깃허브가 제공하는 기본 우분투 가상 환경에서 실행
+    runs-on: ubuntu-latest
+
+    steps:
+      # 3. 내 저장소의 코드를 가상 환경으로 가져오기
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 4. 간단한 쉘 명령어 실행해보기
+      - name: Run a simple command
+        run: |
+          echo "안녕하세요! GitHub Actions가 정상적으로 실행되었습니다."
+          echo "현재 날짜와 시간을 확인합니다:"
+          date
